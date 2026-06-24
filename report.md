@@ -29,9 +29,9 @@ Published a governed dunning-ladder skill to the runx registry at codeboost-tr/d
 - **PR URL:** https://github.com/runxhq/runx/pull/139
 - **X.yaml:** https://raw.githubusercontent.com/umbtest03/runx/f0673f6b/skills/dunning-ladder/X.yaml
 - **SKILL.md:** https://raw.githubusercontent.com/umbtest03/runx/f0673f6b/skills/dunning-ladder/SKILL.md
-- **Evidence JSON:** https://raw.githubusercontent.com/umbtest03/dunning-ladder-evidence/main/evidence.json
-- **Verification JSON:** https://raw.githubusercontent.com/umbtest03/dunning-ladder-evidence/main/verification.json
-- **Receipt JSON:** https://raw.githubusercontent.com/umbtest03/dunning-ladder-evidence/main/receipt.json
+- **Evidence JSON:** https://raw.githubusercontent.com/codeboost-tr/dunning-ladder-evidence/6fcd5f38d353ad8b4691909b0476888504d24330/evidence.json
+- **Verification JSON:** https://raw.githubusercontent.com/codeboost-tr/dunning-ladder-evidence/6fcd5f38d353ad8b4691909b0476888504d24330/verification.json
+- **Receipt JSON:** https://raw.githubusercontent.com/codeboost-tr/dunning-ladder-evidence/6fcd5f38d353ad8b4691909b0476888504d24330/receipt.json
 - **Receipt ref:** runx:receipt:sha256:28f430d926510b52e04bd3b79f4fd9e91aa7d64d4fdfb49d2eb43fc2c72f7874
 
 ## Usage

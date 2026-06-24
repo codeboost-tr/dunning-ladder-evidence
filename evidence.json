@@ -85,7 +85,7 @@
         }
       ]
     },
-    "receipt_json_url": "https://raw.githubusercontent.com/umbtest03/dunning-ladder-evidence/main/receipt.json",
+    "receipt_json_url": "https://raw.githubusercontent.com/codeboost-tr/dunning-ladder-evidence/6fcd5f38d353ad8b4691909b0476888504d24330/receipt.json",
     "harness_cases": [
       {"name": "within-cap-reminder", "status": "sealed"},
       {"name": "cap-reached-escalate", "status": "failure"}
