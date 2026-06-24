@@ -3,7 +3,7 @@
     {
       "artifact_refs": [],
       "closure": {
-        "closed_at": "2026-06-23T21:01:09.972Z",
+        "closed_at": "2026-06-24T10:10:51.853Z",
         "disposition": "closed",
         "reason_code": "process_exit",
         "summary": "cli-tool exited successfully"
@@ -58,7 +58,7 @@
     "terms": []
   },
   "canonicalization": "runx.receipt.c14n.v1",
-  "created_at": "2026-06-23T21:01:09.972Z",
+  "created_at": "2026-06-24T10:10:51.853Z",
   "decisions": [
     {
       "artifact_refs": [],
@@ -86,17 +86,17 @@
       "selected_harness_ref": null
     }
   ],
-  "digest": "sha256:e9167cb71614f80ffaf36625521098118524d28b9e8f1784cae03a0c89946091",
-  "id": "sha256:10fe69f83519fbcf59a17c547c9affa074aa3af1933c2d12dab787386f1a9e8a",
+  "digest": "sha256:317a56a8a09aadb58719173291149275aed2cb15510fa808c3cbd31f58a52205",
+  "id": "sha256:28f430d926510b52e04bd3b79f4fd9e91aa7d64d4fdfb49d2eb43fc2c72f7874",
   "idempotency": {
     "content_hash": "sha256:run_dunning_27656b0dd2ee-dunning-content",
     "intent_key": "sha256:run_dunning_27656b0dd2ee-dunning-intent",
     "trigger_fingerprint": "sha256:run_dunning_27656b0dd2ee-dunning-trigger"
   },
   "issuer": {
-    "kid": "runx-demo-key",
+    "kid": "runx-publish-harness-local",
     "public_key_sha256": "sha256:3097e2dee2cb4a34b53840cdb705aed71067c36f68db0e0f559c3f3fa043315f",
-    "type": "hosted"
+    "type": "ci"
   },
   "lineage": {
     "children": [],
@@ -104,7 +104,7 @@
   },
   "schema": "runx.receipt.v1",
   "seal": {
-    "closed_at": "2026-06-23T21:01:09.972Z",
+    "closed_at": "2026-06-24T10:10:51.853Z",
     "criteria": [
       {
         "criterion_id": "process_exit",
@@ -115,14 +115,14 @@
       }
     ],
     "disposition": "closed",
-    "last_observed_at": "2026-06-23T21:01:09.972Z",
+    "last_observed_at": "2026-06-24T10:10:51.853Z",
     "reason_code": "process_closed",
     "summary": "cli-tool dunning completed"
   },
   "signals": [],
   "signature": {
     "alg": "Ed25519",
-    "value": "base64:2WmGRHllQfpwUWXUyjugZGifbwd_zJSyFW65s9E-8HAgaRXVbY-3gAJjCMkRnNIQfP4H5fMKZJkSTqLJOh-FBw"
+    "value": "base64:WlIBil02fvKS99XGOjCVG16JH2SDPQV4_0kK2DR1-LoLaLI_aYaQxibkSLREiBT5rgEDdrx4tBStZpqZi-eyAA"
   },
   "subject": {
     "commitments": [],
