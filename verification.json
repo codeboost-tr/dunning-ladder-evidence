@@ -1,39 +1,25 @@
 {
-  "verifications": [
-    {
-      "check": "publish",
-      "passed": true,
-      "detail": "Skill published to registry at https://runx.ai/x/codeboost-tr/dunning-ladder"
-    },
-    {
-      "check": "skill_content",
-      "passed": true,
-      "detail": "SKILL.md documents purpose, procedure, inputs, output schema, edge cases. X.yaml defines harness with sealed + failure cases."
-    },
-    {
-      "check": "harness",
-      "passed": true,
-      "detail": "2 harness cases: within-cap-reminder (sealed), cap-reached-escalate (failure). Both passed."
-    },
-    {
-      "check": "cap_reached_escalation",
-      "passed": true,
-      "detail": "cap-reached-escalate case: aging_days=60, cap=3, step=3 >= cap. Skill exits 1 with escalation JSON on stderr. No reminder_proposal emitted."
-    },
-    {
-      "check": "dogfood_evidence",
-      "passed": true,
-      "detail": "Post-publish dogfood run with within-cap inputs produces sealed receipt sha256:28f430d9. Verify output captured."
-    },
-    {
-      "check": "pr",
-      "passed": true,
-      "detail": "PR #139 opened from umbtest03/runx against runxhq/runx with skills/dunning-ladder/ package."
-    },
-    {
-      "check": "reproducibility",
-      "passed": true,
-      "detail": "install_command: runx add codeboost-tr/dunning-ladder@sha-5a9176c1fd75 --registry https://api.runx.ai"
-    }
-  ]
+  "schema": "runx.verify_verdict.v1",
+  "receipt_id": "sha256:28f430d926510b52e04bd3b79f4fd9e91aa7d64d4fdfb49d2eb43fc2c72f7874",
+  "valid": true,
+  "digest": {
+    "status": "valid",
+    "expected": "sha256:317a56a8a09aadb58719173291149275aed2cb15510fa808c3cbd31f58a52205",
+    "actual": "sha256:317a56a8a09aadb58719173291149275aed2cb15510fa808c3cbd31f58a52205"
+  },
+  "content_address": {
+    "status": "valid",
+    "expected": "sha256:28f430d926510b52e04bd3b79f4fd9e91aa7d64d4fdfb49d2eb43fc2c72f7874",
+    "actual": "sha256:28f430d926510b52e04bd3b79f4fd9e91aa7d64d4fdfb49d2eb43fc2c72f7874"
+  },
+  "signature": {
+    "mode": "production",
+    "status": "valid",
+    "kid": "runx-publish-harness-local"
+  },
+  "lineage": {
+    "status": "unverified",
+    "message": "single receipt verification cannot prove receipt-tree lineage"
+  },
+  "findings": []
 }
