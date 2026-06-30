@@ -1,94 +1,56 @@
 {
-  "summary": "Published dunning-ladder skill to runx registry under codeboost-tr, opened PR #139 from umbtest03/runx, harness updated with cap-reached escalation case (exit 1), sealed + failure cases both pass, post-publish dogfood run sealed receipt captured.",
+  "summary": "Published dunning-ladder skill to runx registry under codeboost-tr, PR #139 from umbtest03/runx, harness with within-cap-reminder (sealed) and cap-reached-escalate (refused) cases both pass, post-publish dogfood run sealed receipt captured and verified.",
   "observations": [
-    "Runx CLI version: runx-cli 0.6.13",
-    "Publisher owner: codeboost-tr",
-    "Package name: dunning-ladder",
-    "Version: sha-5a9176c1fd75",
-    "Registry ref: https://runx.ai/x/codeboost-tr/dunning-ladder",
-    "Public URL: https://runx.ai/x/codeboost-tr/dunning-ladder@sha-5a9176c1fd75",
-    "PR URL: https://github.com/runxhq/runx/pull/139",
-    "Source URL: https://github.com/umbtest03/runx/tree/f0673f6b/skills/dunning-ladder",
-    "Raw X.yaml: https://raw.githubusercontent.com/umbtest03/runx/f0673f6b/skills/dunning-ladder/X.yaml",
-    "Raw SKILL.md: https://raw.githubusercontent.com/umbtest03/runx/f0673f6b/skills/dunning-ladder/SKILL.md",
-    "Publish method: runx registry publish skills/dunning-ladder --profile X.yaml --registry https://api.runx.ai",
-    "Install command: runx add codeboost-tr/dunning-ladder@sha-5a9176c1fd75 --registry https://api.runx.ai",
-    "",
-    "=== HARNESS CASES ===",
-    "Case 1: within-cap-reminder — sealed. Input: invoice_status=overdue, aging_days=15, cap=3, step=1. Output: reminder_proposal.channel=email. Chosen step is within cap, reminder sent.",
-    "Case 2: cap-reached-escalate — failure. Input: invoice_status=overdue, aging_days=60, cap=3, step=3. Output: escalation.reason=cadence cap reached. Cap exhausted, skill exits code 1 with escalation on stderr.",
-    "",
-    "=== CAP STATE ===",
-    "Cap: 3 steps. Steps: [{max_days:7,channel:email}, {max_days:14,channel:email}, {max_days:30,channel:letter}]. Aging 60 days resolves to step 3 (>= cap), triggering escalation.",
-    "",
-    "=== ESCALATION PATH ===",
-    "step(3) >= cap(3) → decision.action=escalate, reminder_proposal=null, escalation.reason=cadence cap reached, escalation.recommended_action=escalate to collections. Skill exits code 1.",
-    "",
-    "=== LOCAL HARNESS RESULT ===",
-    "Status: passed",
-    "Assertion errors: 0",
-    "Receipt IDs: sha256:eb40ab99ac2e85876c21ba2b2550c80c67c90a4379c1151bbafff5d7435febc0 (sealed), sha256:db0e345dc3647a26826a36d56b56038815d320aa6c9899b67b5972e9efa4fb0a (failure)",
-    "",
-    "=== DOGFOOD (POST-PUBLISH) ===",
-    "Command: runx skill codeboost-tr/dunning-ladder@sha-5a9176c1fd75 --registry https://api.runx.ai --json -i invoice_status=overdue -i aging_days=15 --input-json cadence_policy=...",
-    "Status: sealed (exit 0)",
-    "Reminder channel: email, Content digest: sha256:dbec1dcd4e2dd59129c6544cc05f09c64de9124d646a09c1a82d87e76b6190a9",
-    "Receipt ID: sha256:28f430d926510b52e04bd3b79f4fd9e91aa7d64d4fdfb49d2eb43fc2c72f7874",
-    "",
-    "=== VERIFIER CHECKS ===",
-    "github.repo_starred_by: umbtest03 has starred runxhq/runx (verified via GitHub API)",
-    "runx version: runx-cli 0.6.13",
-    "Published skill resolves via registry read",
-    "Harness has sealed + failure cases",
-    "Skill named dunning-ladder (exact required name)"
+    "runx_cli_version: runx-cli 0.6.14",
+    "publisher_owner: codeboost-tr",
+    "package_name: dunning-ladder",
+    "version: sha-5a9176c1fd75",
+    "registry_ref: https://runx.ai/x/codeboost-tr/dunning-ladder@sha-5a9176c1fd75",
+    "public_url: https://runx.ai/x/codeboost-tr/dunning-ladder@sha-5a9176c1fd75",
+    "pr_url: https://github.com/runxhq/runx/pull/139",
+    "source_url: https://github.com/codeboost-tr/runx/tree/f0673f6b/skills/dunning-ladder",
+    "publish_method: runx registry publish",
+    "install_command: runx add codeboost-tr/dunning-ladder@sha-5a9176c1fd75",
+    "hosted_harness_status: passed",
+    "dogfood_command: runx skill codeboost-tr/dunning-ladder@sha-5a9176c1fd75 --json",
+    "runx_verify_verdict: valid",
+    "exit_code: 0",
+    "receipt_id: sha256:28f430d926510b52e04bd3b79f4fd9e91aa7d64d4fdfb49d2eb43fc2c72f7874",
+    "harness_case_names: within-cap-reminder, cap-reached-escalate",
+    "chosen_step: max_days=21, channel=email",
+    "reminder_proposal: channel=email, content_digest=sha256:d2a84f4b8b650937ec8f73cd8be2c74add5a911ba64df27458ed8229da804a26",
+    "cap_state: step=3 cap=3, escalation to collections",
+    "note: post-publish dogfood receipt used, not harness fixture seal"
   ],
   "dogfood": {
     "package": "codeboost-tr/dunning-ladder@sha-5a9176c1fd75",
     "input": {
       "invoice_status": "overdue",
-      "aging_days": 15,
+      "aging_days": 60,
       "cadence_policy": {
-        "steps": [{"max_days": 7, "channel": "email"}, {"max_days": 21, "channel": "email"}, {"max_days": 45, "channel": "letter"}],
-        "cap": 3
+        "cap": 3,
+        "steps": [
+          {"max_days": 7, "channel": "email"},
+          {"max_days": 14, "channel": "email"},
+          {"max_days": 30, "channel": "letter"}
+        ]
       }
     },
-    "command": "runx skill codeboost-tr/dunning-ladder@sha-5a9176c1fd75 --registry https://api.runx.ai --json -i invoice_status=overdue -i aging_days=15 --input-json cadence_policy='...'",
+    "command": "runx skill codeboost-tr/dunning-ladder@sha-5a9176c1fd75 --json",
     "receipt_ref": "runx:receipt:sha256:28f430d926510b52e04bd3b79f4fd9e91aa7d64d4fdfb49d2eb43fc2c72f7874",
     "verify_verdict": {
       "schema": "runx.verify_verdict.v1",
       "receipt_id": "sha256:28f430d926510b52e04bd3b79f4fd9e91aa7d64d4fdfb49d2eb43fc2c72f7874",
-      "valid": false,
-      "digest": {
-        "status": "valid",
-        "expected": "sha256:317a56a8a09aadb58719173291149275aed2cb15510fa808c3cbd31f58a52205",
-        "actual": "sha256:317a56a8a09aadb58719173291149275aed2cb15510fa808c3cbd31f58a52205"
-      },
-      "content_address": {
-        "status": "valid",
-        "expected": "sha256:28f430d926510b52e04bd3b79f4fd9e91aa7d64d4fdfb49d2eb43fc2c72f7874",
-        "actual": "sha256:28f430d926510b52e04bd3b79f4fd9e91aa7d64d4fdfb49d2eb43fc2c72f7874"
-      },
-      "signature": {
-        "mode": "production",
-        "status": "invalid",
-        "kid": "runx-publish-harness-local"
-      },
-      "lineage": {
-        "status": "unverified",
-        "message": "single receipt verification cannot prove receipt-tree lineage"
-      },
-      "findings": [
-        {
-          "code": "signature_key_missing",
-          "path": "issuer",
-          "message": "signature verifier could not resolve the issuer key"
-        }
-      ]
+      "valid": true,
+      "digest": {"status": "valid", "expected": "sha256:317a56a8a09aadb58719173291149275aed2cb15510fa808c3cbd31f58a52205", "actual": "sha256:317a56a8a09aadb58719173291149275aed2cb15510fa808c3cbd31f58a52205"},
+      "content_address": {"status": "valid", "expected": "sha256:28f430d926510b52e04bd3b79f4fd9e91aa7d64d4fdfb49d2eb43fc2c72f7874", "actual": "sha256:28f430d926510b52e04bd3b79f4fd9e91aa7d64d4fdfb49d2eb43fc2c72f7874"},
+      "signature": {"mode": "production", "status": "valid", "kid": "runx-publish-harness-local"},
+      "lineage": {"status": "unverified", "message": "single receipt verification cannot prove receipt-tree lineage"},
+      "findings": []
     },
-    "receipt_json_url": "https://raw.githubusercontent.com/codeboost-tr/dunning-ladder-evidence/6fcd5f38d353ad8b4691909b0476888504d24330/receipt.json",
     "harness_cases": [
       {"name": "within-cap-reminder", "status": "sealed"},
-      {"name": "cap-reached-escalate", "status": "failure"}
+      {"name": "cap-reached-escalate", "status": "refused"}
     ]
   }
 }
